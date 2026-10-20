@@ -1,0 +1,39 @@
+
+{% extends "base.html" %}
+
+{% block titulo %}Ver recuerdo | QueridoDiario{% endblock %}
+
+{% block contenido %}
+<section class="tarjeta detalle">
+    <p class="subtitulo">UN RECUERDO ESPECIAL</p>
+
+    <h1>Mi recuerdo</h1>
+
+    <!-- Fecha de la entrada -->
+    <p class="fecha">
+        {{ entrada.fecha }}
+    </p>
+
+    <!-- Contenido completo -->
+    <div class="notas">
+        {{ entrada.notas }}
+    </div>
+
+    <!-- Botones de navegación -->
+    <div class="acciones">
+        <a
+            class="boton boton-secundario"
+            href="{{ url_for('entradas.panel') }}"
+        >
+            Volver al diario
+        </a>
+
+        <a
+            class="boton"
+            href="{{ url_for('entradas.editar', id_entrada=entrada.id) }}"
+        >
+            Editar recuerdo
+        </a>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,83 @@
+
+{% extends 'base.html' %}
+
+{% block titulo %}Bienvenida a QueridoDiario{% endblock %}
+
+{% block contenido %}
+
+<!-- Presentación del sitio -->
+<div class="presentacion">
+    <p class="etiqueta">TU PEQUEÑO RINCÓN ♡</p>
+    <h1>Todos tus recuerdos en un solo lugar</h1>
+    <p class="ayuda">Un espacio para escribir, recordar y volver a tus días favoritos.</p>
+</div>
+
+<!-- Formularios de acceso -->
+<section class="acceso">
+
+    <!-- Registro -->
+    <div class="tarjeta">
+        <h1>Crear cuenta</h1>
+        <p class="ayuda">Comienza tu diario personal.</p>
+
+        <form method="post" class="formulario">
+            <input type="hidden" name="accion" value="registro">
+
+            <label>
+                Nombre
+                <input type="text" name="nombre" minlength="2" required>
+            </label>
+
+            <label>
+                Apellido
+                <input type="text" name="apellido" minlength="2" required>
+            </label>
+
+            <label>
+                Correo electrónico
+                <input type="email" name="email" required>
+            </label>
+
+            <label>
+                Edad
+                <input type="number" name="edad" min="18" max="120" required>
+            </label>
+
+            <label>
+                Contraseña
+                <input type="password" name="clave" minlength="8" required>
+            </label>
+
+            <label>
+                Confirmar contraseña
+                <input type="password" name="confirmar" minlength="8" required>
+            </label>
+
+            <button type="submit">Crear mi cuenta ♡</button>
+        </form>
+    </div>
+
+    <!-- Inicio de sesión -->
+    <div class="tarjeta">
+        <h1>¡Qué bueno verte!</h1>
+        <p class="ayuda">Entra y sigue escribiendo tus recuerdos.</p>
+
+        <form method="post" class="formulario">
+            <input type="hidden" name="accion" value="login">
+
+            <label>
+                Correo electrónico
+                <input type="email" name="email_login" required>
+            </label>
+
+            <label>
+                Contraseña
+                <input type="password" name="clave_login" required>
+            </label>
+
+            <button type="submit">Iniciar sesión</button>
+        </form>
+    </div>
+
+</section>
+{% endblock %}

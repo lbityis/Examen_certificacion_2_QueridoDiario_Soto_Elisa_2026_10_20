@@ -1,0 +1,41 @@
+
+{% extends 'base.html' %}
+
+{% block titulo %}Editar entrada{% endblock %}
+
+{% block contenido %}
+
+<!-- Formulario para modificar una entrada -->
+<section class="formtarjeta">
+    <p class="etiqueta">UN RECUERDO PARA GUARDAR ♡</p>
+    <h1>Editar entrada</h1>
+    <p class="ayuda">Puedes cambiar la fecha o las notas.</p>
+
+    <form method="post" class="formulario">
+
+        <!-- Mostramos la fecha actual -->
+        <label>
+            Fecha
+            <input
+                type="date"
+                name="fecha"
+                value="{{ entrada.fecha.strftime('%Y-%m-%d') if entrada.fecha.strftime is defined else entrada.fecha }}"
+                max="{{ fecha_hoy }}"
+                required
+            >
+        </label>
+
+        <!-- Mostramos las notas actuales -->
+        <label>
+            Notas
+            <textarea name="notas" rows="8" required>{{ entrada.notas }}</textarea>
+        </label>
+
+        <div class="acciones">
+            <button type="submit">Guardar cambios</button>
+            <a class="boton claro" href="{{ url_for('entradas.panel') }}">Cancelar</a>
+        </div>
+    </form>
+</section>
+
+{% endblock %}

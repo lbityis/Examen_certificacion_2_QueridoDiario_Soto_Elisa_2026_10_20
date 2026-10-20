@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Nueva entrada{% endblock %}
+
+{% block contenido %}
+
+<!-- Formulario para escribir -->
+<section class="formtarjeta">
+  <p class="etiqueta">UN NUEVO RECUERDO ♡</p>
+  <h1>Nueva entrada</h1>
+  <p class="ayuda">Cuéntanos qué pasó en tu día.</p>
+
+  <form method="post" class="formulario">
+
+    <!-- Elegimos la fecha -->
+    <label>
+      Fecha
+      <input type="date" name="fecha" value="{{ fecha }}" max="{{ fecha_hoy }}" required>
+    </label>
+
+    <!-- Escribimos las notas -->
+    <label>
+      Notas
+      <textarea name="notas" rows="8" required>{{ notas }}</textarea>
+    </label>
+
+    <div class="acciones">
+      <button type="submit">Guardar recuerdo</button>
+      <a class="boton claro" href="{{ url_for('entradas.panel') }}">Cancelar</a>
+    </div>
+  </form>
+</section>
+
+{% endblock %}

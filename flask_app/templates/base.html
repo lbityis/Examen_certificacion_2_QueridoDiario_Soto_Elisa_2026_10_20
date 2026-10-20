@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <!-- Configuración de la página -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{% block titulo %}QueridoDiario{% endblock %}</title>
+
+  <!-- Conectamos el archivo CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+  <!-- Menú superior -->
+  <header class="barra">
+    <a class="marca" href="{{ url_for('usuarios.inicio') }}">
+      QueridoDiario
+    </a>
+
+    {% if session.get('usuario_id') %}
+    <nav>
+      <a href="{{ url_for('entradas.panel') }}">Inicio</a>
+      <a href="{{ url_for('entradas.nueva') }}">Nueva entrada</a>
+
+      <!-- Cerramos sesión mediante POST -->
+      <form class="salida" action="{{ url_for('usuarios.salir') }}" method="post">
+        <button class="enlace" type="submit">Cerrar sesión</button>
+      </form>
+    </nav>
+    {% endif %}
+  </header>
+
+  <!-- Mensajes de error y confirmación -->
+  <main class="contenedor">
+    {% with mensajes = get_flashed_messages(with_categories=true) %}
+    {% if mensajes %}
+    <section class="mensajes">
+      {% for tipo, mensaje in mensajes %}
+      <p class="mensaje {{ tipo }}">{{ mensaje }}</p>
+      {% endfor %}
+    </section>
+    {% endif %}
+    {% endwith %}
+
+    <!-- Contenido de cada página -->
+    {% block contenido %}{% endblock %}
+  </main>
+
+  <!-- Pie de página -->
+  <footer class="pie">
+    Un espacio para guardar tus días ♡
+  </footer>
+
+</body>
+
+</html>

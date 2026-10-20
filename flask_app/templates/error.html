@@ -1,0 +1,18 @@
+
+{% extends "base.html" %}
+
+{% block titulo %}Ocurrió un error | QueridoDiario{% endblock %}
+
+{% block contenido %}
+<section class="tarjeta detalle mensaje-error">
+    <h1>¡Ups!</h1>
+
+    <!-- Mostramos el mensaje enviado por Flask -->
+    <p>{{ mensaje or "Ha ocurrido un problema." }}</p>
+
+    <a class="boton"
+       href="{{ url_for('entradas.panel') }}">
+        Volver a mi diario
+    </a>
+</section>
+{% endblock %}
